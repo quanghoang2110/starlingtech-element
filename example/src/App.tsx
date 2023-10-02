@@ -1,19 +1,21 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-starlingtech-element';
+import { StyleSheet, Text } from 'react-native';
+import { AppBlock, appSize, StarlingContainer } from '@starlingtech/element';
 
 export default function App() {
   const [result, setResult] = React.useState<number | undefined>();
 
   React.useEffect(() => {
-    multiply(3, 7).then(setResult);
+    setResult(appSize(100));
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
+    <StarlingContainer>
+      <AppBlock flex center background="backdrop">
+        <Text>Result: {result}</Text>
+      </AppBlock>
+    </StarlingContainer>
   );
 }
 

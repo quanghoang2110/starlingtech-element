@@ -1,17 +1,17 @@
-# react-native-starlingtech-element
+# @starlingtech/element
 
 starlingtech react native elements
 
 ## Installation
 
 ```sh
-npm install react-native-starlingtech-element
+npm install @starlingtech/element
 ```
 
 ## Usage
 
 ```js
-import { multiply } from 'react-native-starlingtech-element';
+import { multiply } from '@starlingtech/element';
 
 // ...
 

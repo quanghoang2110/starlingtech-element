@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "@starlingtech/element": ["./src/index"]
+      "@starlingtech/element": ["./src/index"],
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
@@ -23,6 +23,6 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext",
-    "verbatimModuleSyntax": true
+    "verbatimModuleSyntax": true,
   }
 }

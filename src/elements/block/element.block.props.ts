@@ -1,9 +1,9 @@
 import { StyleSheet, type ViewProps } from 'react-native';
 
 import { type ElementProps, handleStarlingStyle } from '../element.props';
-import type { ColorScheme } from '../../theme/color';
+import type { StarlingColorScheme } from '../../theme/color';
 
-export interface ElementBlockProps extends ElementProps, ViewProps {
+export interface BlockProps extends ElementProps, ViewProps {
   center?: boolean;
   row?: boolean;
   column?: boolean;
@@ -12,8 +12,8 @@ export interface ElementBlockProps extends ElementProps, ViewProps {
 }
 
 export function handleBlockStarlingStyle(
-  props: ElementBlockProps,
-  color: ColorScheme
+  props: BlockProps,
+  color: StarlingColorScheme
 ) {
   const { primary } = props;
 

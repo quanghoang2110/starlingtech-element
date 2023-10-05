@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 
-// import { sizes } from '@vn.starlingTech/theme/theming';
 import type { ViewStyle } from 'react-native';
 import { appSize } from './sizeHelper';
 

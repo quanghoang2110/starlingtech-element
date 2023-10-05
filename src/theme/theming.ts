@@ -10,8 +10,10 @@ export const sizes = {
   icon: appSize(24),
   input: appSize(14),
 
-  buttonHeight: appSize(44),
-  buttonText: appSize(14),
+  buttonWidth: 330,
+  buttonHeight: 44,
+  buttonRadius: appSize(8),
+  buttonText: 14,
 
   //font size
   title: 20,

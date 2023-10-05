@@ -5,7 +5,10 @@ import {
   handleMargin,
   handlePadding,
 } from '../helper/utilHelper';
-import type { ColorScheme, ColorSchemeKey } from '../theme/color';
+import type {
+  StarlingColorScheme,
+  StarlingColorSchemeKey,
+} from '../theme/color';
 import { sizes } from '../theme/theming';
 import { appSize } from '../helper/sizeHelper';
 
@@ -16,7 +19,7 @@ export interface ElementProps {
   margin?: boolean | number | `${number}%` | number[];
   padding?: boolean | number | number[];
   flex?: number | boolean;
-  background?: ColorSchemeKey;
+  background?: StarlingColorSchemeKey;
   border?: boolean | number | number[];
   ph?: number | `${number}%`;
   pv?: number | `${number}%`;
@@ -61,7 +64,7 @@ export interface ElementProps {
 
 export function handleStarlingStyle<T extends ElementProps>(
   props: T,
-  color: ColorScheme
+  color: StarlingColorScheme
 ) {
   const { width, height, margin, padding, radius, background, flex, border } =
     props;
@@ -211,6 +214,44 @@ export function handleStarlingStyle<T extends ElementProps>(
     elementProps: tempProps,
     elementStyles: StyleSheet.flatten(tempStyles),
   };
+}
+
+export function handleButtonViewProps(props: any, color: StarlingColorScheme) {
+  let tempStyles: ViewStyle = {};
+  const tempProps = { ...props };
+  if (props.margin !== undefined) {
+    tempStyles = { ...handleMargin(props.margin) };
+    delete tempProps.margin;
+  }
+  if (props.mh) {
+    tempStyles.marginHorizontal = appSize(props.mh);
+    delete tempProps.mh;
+  }
+  if (props.mv) {
+    tempStyles.marginVertical = appSize(props.mv);
+    delete tempProps.mv;
+  }
+  if (props.mt) {
+    tempStyles.marginTop = appSize(props.mt);
+    delete tempProps.mt;
+  }
+  if (props.mb) {
+    tempStyles.marginBottom = appSize(props.mb);
+    delete tempProps.mb;
+  }
+  if (props.ml) {
+    tempStyles.marginLeft = appSize(props.ml);
+    delete tempProps.ml;
+  }
+  if (props.mr) {
+    tempStyles.marginRight = appSize(props.mr);
+    delete tempProps.mr;
+  }
+  if (props.border) {
+    tempStyles = { ...tempStyles, ...handleBorder(props.border, color.border) };
+    delete tempProps.border;
+  }
+  return { marginStyles: tempStyles, marginProps: tempProps };
 }
 
 export function removeInvalidProps(tmp: object) {

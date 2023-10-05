@@ -1,7 +1,17 @@
 import * as React from 'react';
 
-import { StyleSheet, Text } from 'react-native';
-import { AppBlock, appSize, StarlingContainer } from '@starlingtech/element';
+import { Text } from 'react-native';
+import {
+  AppBlock,
+  AppButton,
+  appSize,
+  AppText,
+  Divider,
+  KeyboardDismiss,
+  Skeleton,
+  StarlingContainer,
+} from '@starlingtech/element';
+// import { AppImage } from '@starlingtech/element/image';
 
 export default function App() {
   const [result, setResult] = React.useState<number | undefined>();
@@ -10,24 +20,42 @@ export default function App() {
     setResult(appSize(100));
   }, []);
 
+  const [processing, setProcessing] = React.useState(false);
+
+  const onPress = () => {
+    setProcessing(true);
+    setTimeout(() => {
+      setProcessing(false);
+    }, 2000);
+  };
+
   return (
     <StarlingContainer>
-      <AppBlock flex center background="backdrop">
-        <Text>Result: {result}</Text>
-      </AppBlock>
+      <KeyboardDismiss>
+        {/* <AppImage /> */}
+        <AppBlock flex center background="white">
+          <Text>Result: {result}</Text>
+          <AppText size={20} color="danger">
+            Result???
+          </AppText>
+          {/* <OverlayLoading visible /> */}
+          <AppButton onPress={() => {}}>
+            <AppText>aaa</AppText>
+          </AppButton>
+          <Divider />
+          <AppButton onPress={() => {}} text="aaa" />
+          <Skeleton animation="pulse" height={100} width={330} radius={100} />
+          <AppButton
+            processing={processing}
+            onPress={onPress}
+            text="aaa"
+            primary
+            width={330}
+            radius={12}
+            mt={30}
+          />
+        </AppBlock>
+      </KeyboardDismiss>
     </StarlingContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
-  },
-});

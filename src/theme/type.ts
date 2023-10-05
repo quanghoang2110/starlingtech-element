@@ -1,7 +1,7 @@
-import type color from './color';
+import type { StarlingColorScheme } from './color';
 
-export interface Theme {
-  colors: typeof color;
+export interface StarlingTheme {
+  colors: StarlingColorScheme;
   fonts: {
     black: string;
     extraBold: string;

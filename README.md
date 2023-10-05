@@ -7,6 +7,9 @@ starlingtech react native elements
 ```sh
 npm install @starlingtech/element
 ```
+```sh
+yarn add @starlingtech/element
+```
 
 ## Usage
 

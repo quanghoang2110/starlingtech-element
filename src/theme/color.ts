@@ -18,6 +18,7 @@ const color = {
   danger: '#FF2D55',
   success: '#18d676',
   warning: '#F0C330',
+  divider: '#e0e0e0',
   border: '#e9e9e9',
   icon: '#999999',
   inputTextColor: '#000000',
@@ -26,9 +27,18 @@ const color = {
   inputDisabled: '#f5f6f7',
   //
   required: '#FF2D55',
+  //grey
+  grey0: '#393e42',
+  grey1: '#43484d',
+  grey2: '#5e6977',
+  grey3: '#86939e',
+  grey4: '#bdc6cf',
+  grey5: '#e1e8ee',
+  skeleton: '#e4e6eb',
+  skeletonHighlight: '#f1f2f3',
 };
 
 export default color;
 
-export type ColorScheme = typeof color;
-export type ColorSchemeKey = keyof ColorScheme;
+export type StarlingColorScheme = typeof color;
+export type StarlingColorSchemeKey = keyof StarlingColorScheme;

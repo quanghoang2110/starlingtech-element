@@ -1,14 +1,14 @@
 import * as React from 'react';
 
-import type { Theme } from './type';
+import type { StarlingTheme } from './type';
 import { fonts } from './theming';
 import color from './color';
 
-const ThemeContext = React.createContext<Theme>({
+const StarlingThemeContext = React.createContext<StarlingTheme>({
   colors: color,
   fonts: fonts,
 });
 
-ThemeContext.displayName = 'ThemeContext';
+StarlingThemeContext.displayName = 'ThemeContext';
 
-export default ThemeContext;
+export default StarlingThemeContext;

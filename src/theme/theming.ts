@@ -26,7 +26,6 @@ export const sizes = {
   inputRadius: appSize(9),
   inputMaxWidth: appSize(600),
   inputHorizontalPadding: appSize(12),
-  inputVerticalPadding: appSize(13),
 };
 
 export const fonts = {

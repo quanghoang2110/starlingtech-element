@@ -2219,6 +2219,11 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
+"@starlingtech/util@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@starlingtech/util/-/util-0.1.1.tgz#1bcdb970557ca56d0bd9196299349a968e7d87ac"
+  integrity sha512-AGMNjHHsQt9UUjxoWu0+orKHh636DS4LSnXD5GMNYXjQITgHEc2FYw1yupdh7N9Ad6d/pMGQNYt7hwRdj5PRTA==
+
 "@szmarczak/http-timer@^5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@szmarczak/http-timer/-/http-timer-5.0.1.tgz#c7c1bf1141cdd4751b0399c8fc7b8b664cd5be3a"

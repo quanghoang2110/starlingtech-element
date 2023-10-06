@@ -1,19 +1,22 @@
 import * as React from 'react';
 
-import { Text } from 'react-native';
+import { Text, TextInput } from 'react-native';
 import {
   AppBlock,
   AppButton,
   appSize,
   AppText,
+  AppTextInput,
   Divider,
   KeyboardDismiss,
-  Skeleton,
   StarlingContainer,
 } from '@starlingtech/element';
 // import { AppImage } from '@starlingtech/element/image';
 
 export default function App() {
+  const refInput1 = React.useRef<TextInput>(null);
+  const refInput2 = React.useRef<TextInput>(null);
+
   const [result, setResult] = React.useState<number | undefined>();
 
   React.useEffect(() => {
@@ -29,11 +32,18 @@ export default function App() {
     }, 2000);
   };
 
+  const onValidate = (e: string) => {
+    if (e.includes('a')) {
+      return 'Invalid date!';
+    }
+    return undefined;
+  };
+
   return (
     <StarlingContainer>
-      <KeyboardDismiss>
+      <KeyboardDismiss flex>
         {/* <AppImage /> */}
-        <AppBlock flex center background="white">
+        <AppBlock flex center background="white" ph={16}>
           <Text>Result: {result}</Text>
           <AppText size={20} color="danger">
             Result???
@@ -44,7 +54,15 @@ export default function App() {
           </AppButton>
           <Divider />
           <AppButton onPress={() => {}} text="aaa" />
-          <Skeleton animation="pulse" height={100} width={330} radius={100} />
+          {/* <Skeleton animation="pulse" height={100} width={330} radius={100} /> */}
+          <AppTextInput
+            label="Name"
+            // inline
+            onValidate={onValidate}
+            ref={refInput1}
+            nextInput={refInput2}
+          />
+          <AppTextInput ref={refInput2} secureTextEntry label="Password" />
           <AppButton
             processing={processing}
             onPress={onPress}

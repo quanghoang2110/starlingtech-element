@@ -1,5 +1,8 @@
-declare module '@starling/config';
 declare module '@starling/theme' {
+  export const sizes = {};
+  export const fonts = {};
+  export const UI_WIDTH = 375;
+  export const UI_HEIGHT = 812;
   export type ColorScheme = {
     primary: string;
     accent: string;

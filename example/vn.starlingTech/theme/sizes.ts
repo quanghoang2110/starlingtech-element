@@ -1,5 +1,3 @@
-import { starlingFonts, starlingSizes } from '../starlingTheme';
-
 export const sizes = {
   text: 14,
   radius: 6,
@@ -8,7 +6,7 @@ export const sizes = {
   hint: 13,
   icon: 24,
   //button
-  buttonWidth: 330,
+  buttonWidth: 400,
   buttonHeight: 44,
   buttonRadius: 8,
   buttonText: 14,
@@ -18,18 +16,4 @@ export const sizes = {
   inputRadius: 9,
   inputMaxWidth: 600,
   inputHorizontalPadding: 12,
-  ...starlingSizes,
-};
-
-export const fonts = {
-  black: '',
-  extraBold: '',
-  bold: '',
-  semiBold: '',
-  medium: '',
-  regular: '',
-  light: '',
-  extraLight: '',
-  thin: '',
-  ...starlingFonts,
 };

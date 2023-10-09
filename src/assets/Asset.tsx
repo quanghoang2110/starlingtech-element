@@ -34,5 +34,5 @@ export function Asset({ name, size, color }: Props) {
 }
 
 const styles = StyleSheet.create({
-  icon: { width: sizes.icon, height: sizes.icon },
+  icon: { width: appSize(sizes.icon), height: appSize(sizes.icon) },
 });

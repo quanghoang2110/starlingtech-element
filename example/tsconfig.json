@@ -4,7 +4,7 @@
     "baseUrl": ".",
     "paths": {
       "@starlingtech/element": ["../src"],
-      "@starling/theme": ["vn.starlingTech/theme/type.ts"]
+      "@starling/theme": ["vn.starlingTech/theme/theming"]
     }
   }
 }

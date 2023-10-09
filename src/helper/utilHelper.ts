@@ -8,7 +8,7 @@ export function handleMargin(
 ): ViewStyle {
   if (typeof margin === 'boolean') {
     return {
-      margin: appSize(15), //sizes.margin,
+      margin: appSize(15),
     };
   }
   if (typeof margin === 'number') {
@@ -65,7 +65,7 @@ export function handleMargin(
 export function handlePadding(padding: boolean | number | number[]): ViewStyle {
   if (typeof padding === 'boolean') {
     return {
-      padding: appSize(15), //sizes.padding,
+      padding: appSize(15),
     };
   }
   if (typeof padding === 'number') {

@@ -34,7 +34,7 @@ export default function ButtonLoading(props: Props) {
   const borderRadius =
     props.radius !== undefined && typeof props.radius !== 'boolean'
       ? appSize(props.radius)
-      : sizes.radius;
+      : appSize(sizes.radius);
 
   const [isLoading, setIsLoading] = useState(false);
 

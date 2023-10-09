@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { sizes } from '../../theme/theming';
+import { fonts, sizes } from '../../theme/theming';
 import { appSize } from '../../helper/sizeHelper';
 
 export default StyleSheet.create({
@@ -7,7 +7,7 @@ export default StyleSheet.create({
     paddingRight: 55,
   },
   helperTxt: {
-    fontSize: sizes.hint,
+    fontSize: appSize(sizes.hint),
     fontWeight: '300',
     marginHorizontal: 1,
     marginTop: appSize(6),
@@ -17,15 +17,16 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  inlineLabel: { marginRight: sizes.padding, width: 122 },
+  inlineLabel: { marginRight: appSize(sizes.padding), width: 122 },
   inputView: {
-    borderRadius: sizes.inputRadius,
+    borderRadius: appSize(sizes.inputRadius),
     borderWidth: 1,
-    fontSize: sizes.text,
-    maxWidth: sizes.inputMaxWidth,
-    paddingLeft: sizes.inputHorizontalPadding,
+    fontSize: appSize(sizes.text),
+    fontFamily: fonts?.regular,
+    maxWidth: appSize(sizes.inputMaxWidth),
+    paddingLeft: appSize(sizes.inputHorizontalPadding),
     paddingRight: 45,
-    height: sizes.inputHeight,
+    height: appSize(sizes.inputHeight),
     paddingTop: 0,
     paddingBottom: 0,
     width: '100%',

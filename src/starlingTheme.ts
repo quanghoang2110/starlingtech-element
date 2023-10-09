@@ -1,3 +1,14 @@
-import type { ColorScheme } from '@starling/theme';
+import {
+  type ColorScheme,
+  sizes,
+  fonts,
+  UI_WIDTH,
+  UI_HEIGHT,
+} from '@starling/theme';
 
 export type StarlingColorScheme = ColorScheme;
+
+const starlingSizes = sizes;
+const starlingFonts = fonts;
+
+export { starlingSizes, starlingFonts, UI_WIDTH, UI_HEIGHT };

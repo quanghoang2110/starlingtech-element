@@ -83,7 +83,7 @@ export function handleStarlingStyle<T extends ElementProps>(
   }
   if (radius) {
     if (typeof radius === 'boolean') {
-      tempStyles.borderRadius = sizes.radius;
+      tempStyles.borderRadius = appSize(sizes.radius);
     } else {
       tempStyles.borderRadius = appSize(radius);
     }

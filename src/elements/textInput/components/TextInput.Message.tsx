@@ -7,6 +7,7 @@ import Animated, {
 import type { TextStyle } from 'react-native';
 import { sizes } from '../../../theme/theming';
 import Text from '../../text/Text';
+import { appSize } from '../../../helper/sizeHelper';
 
 type Props = {
   style?: TextStyle;
@@ -25,7 +26,7 @@ const TextInputMessage = (props: Props) => {
     return {
       minHeight: withTiming(message ? 10 : 0, { duration: 300 }),
       marginTop: withTiming(message ? marginTop : 0, {
-        duration: 300,
+        duration: 200,
       }),
     };
   }, [message, marginTop]);
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0,
   },
   helperTxt: {
-    fontSize: sizes.hint,
+    fontSize: appSize(sizes.hint),
     marginHorizontal: 1,
   },
 });

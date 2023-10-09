@@ -8,7 +8,6 @@ import type { StarlingColorScheme } from '../../starlingTheme';
 export interface ButtonProps
   extends ElementProps,
     TouchableWithoutFeedbackProps {
-  block?: boolean;
   processing?: boolean;
   text?: string;
   textColor?: keyof StarlingColorScheme;
@@ -39,7 +38,7 @@ export function handleButtonStarlingStyle(
     handleStarlingStyle(props, color);
   if (typeof radius === 'number') {
     tempStyles.borderRadius = appSize(radius);
-    delete tempProps.primary;
+    delete tempProps.radius;
   }
 
   if (primary) {

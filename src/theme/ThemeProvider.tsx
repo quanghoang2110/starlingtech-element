@@ -2,8 +2,7 @@ import * as React from 'react';
 
 import StarlingThemeContext from './ThemeContext';
 import type { StarlingTheme } from './type';
-import color from './color';
-import { fonts } from './theming';
+import color from './light';
 
 type Props = {
   value?: Partial<StarlingTheme>;
@@ -12,10 +11,8 @@ type Props = {
 
 export default function ThemeProvider({ value, children }: Props) {
   const pColor = { ...color, ...value?.colors };
-  const pFonts = { ...fonts, ...value?.fonts };
-
   return (
-    <StarlingThemeContext.Provider value={{ colors: pColor, fonts: pFonts }}>
+    <StarlingThemeContext.Provider value={{ colors: pColor }}>
       {children}
     </StarlingThemeContext.Provider>
   );

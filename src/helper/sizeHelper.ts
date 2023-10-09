@@ -1,12 +1,12 @@
 import { Dimensions } from 'react-native';
 
-import { starlingConfig } from '../starlingConfig';
+import { UI_WIDTH, UI_HEIGHT } from '../starlingTheme';
 
 const { width: windowWidth, height: windowHeight } = Dimensions.get('window');
 
 export function appSize<TData = string | number>(
   size: TData,
-  uiWidth = starlingConfig.UI_WIDTH
+  uiWidth = UI_WIDTH
 ): TData {
   if (typeof size === 'string') {
     return size;
@@ -17,7 +17,7 @@ export function appSize<TData = string | number>(
 
 export function appSizeByHeight<TData = string | number>(
   size: TData,
-  uiHeight = starlingConfig.UI_HEIGHT
+  uiHeight = UI_HEIGHT
 ): TData {
   if (typeof size === 'string') {
     return size;

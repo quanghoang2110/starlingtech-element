@@ -23,8 +23,7 @@ export default class Text extends Component<ElementTextProps> {
   render() {
     const { elementProps, elementStyles } = handleTextStarlingStyle(
       this.props,
-      this.context.colors,
-      this.context.fonts
+      this.context.colors
     );
     return (
       <RNText {...elementProps} style={elementStyles}>

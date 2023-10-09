@@ -1,7 +1,5 @@
 import light from './light';
-import type { ColorScheme } from './type';
-
-const dark: ColorScheme = {
+const dark = {
   ...light,
   primary: '#BB86FC',
   accent: '#03dac6',

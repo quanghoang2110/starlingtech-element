@@ -1,9 +1,10 @@
 import { StyleSheet } from 'react-native';
-import { sizes, type fonts } from '../../theme/theming';
+import { sizes, fonts } from '../../theme/theming';
 import { handleStarlingStyle, type ElementProps } from '../element.props';
 import type { TextProps } from 'react-native';
 import type { TextStyle } from 'react-native';
 import type { StarlingColorScheme } from '../../starlingTheme';
+import { appSize } from '../../helper/sizeHelper';
 
 export interface ElementTextProps extends ElementProps, TextProps {
   size?: number;
@@ -29,12 +30,11 @@ export interface ElementTextProps extends ElementProps, TextProps {
 
 export function handleTextStarlingStyle(
   props: ElementTextProps,
-  themeColor: StarlingColorScheme,
-  themeFonts: typeof fonts
+  themeColor: StarlingColorScheme
 ) {
   const {
     primary,
-    size = sizes.text,
+    size = appSize(sizes.text),
     weight = '400',
     color: textColor = 'text',
     allowFontScaling = false,
@@ -59,36 +59,36 @@ export function handleTextStarlingStyle(
     tempStyles.color = themeColor.primary;
     delete tempProps.primary;
   }
-  let fontFamily = themeFonts.regular;
+  let fontFamily = fonts.regular;
   const _weight = StyleSheet.flatten(props.style)?.fontWeight || weight;
   switch (_weight) {
     case '100':
-      fontFamily = themeFonts.thin;
+      fontFamily = fonts.thin;
       break;
     case '200':
-      fontFamily = themeFonts.extraLight;
+      fontFamily = fonts.extraLight;
       break;
     case '300':
-      fontFamily = themeFonts.light;
+      fontFamily = fonts.light;
       break;
     case '500':
-      fontFamily = themeFonts.medium;
+      fontFamily = fonts.medium;
       break;
     case '600':
-      fontFamily = themeFonts.semiBold;
+      fontFamily = fonts.semiBold;
       break;
     case '700':
     case 'bold':
-      fontFamily = themeFonts.bold;
+      fontFamily = fonts.bold;
       break;
     case '800':
-      fontFamily = themeFonts.extraBold;
+      fontFamily = fonts.extraBold;
       break;
     case '900':
-      fontFamily = themeFonts.black;
+      fontFamily = fonts.black;
       break;
     default:
-      fontFamily = themeFonts.regular;
+      fontFamily = fonts.regular;
       break;
   }
   tempStyles.fontFamily = fontFamily;

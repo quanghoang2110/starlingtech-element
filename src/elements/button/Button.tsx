@@ -3,8 +3,10 @@ import React from 'react';
 import Ripple from './Ripple';
 import { useThemeContext } from '../../hook/contextHook';
 import { sizes } from '../../theme/theming';
-import { handleStarlingStyle } from '../element.props';
-import type { ButtonProps } from './elements.button.props';
+import {
+  handleButtonStarlingStyle,
+  type ButtonProps,
+} from './elements.button.props';
 import ButtonLoading from './ButtonLoading';
 import Text from '../text/Text';
 import { StyleSheet } from 'react-native';
@@ -21,23 +23,20 @@ type Props = ButtonProps &
 
 export default function Button(props: Props) {
   const { colors } = useThemeContext();
-  const { elementProps, elementStyles } = handleStarlingStyle(props, colors);
 
   if (props?.processing !== undefined) {
     return <ButtonLoading {...props} />;
   }
 
-  const children = props.children || (
-    <Text
-      adjustsFontSizeToFit
-      textAlign="center"
-      size={sizes.buttonText}
-      style={[props.textStyle]}
-      color={props.textColor || props.primary ? 'white' : 'text'}
-    >
-      {props.text || ''}
-    </Text>
+  const { elementProps, elementStyles } = handleButtonStarlingStyle(
+    props,
+    colors
   );
+
+  let textColor = props.textColor ?? 'text';
+  if (!props.textColor && props.primary) {
+    textColor = 'white';
+  }
 
   return (
     <Ripple
@@ -47,7 +46,17 @@ export default function Button(props: Props) {
       }
       style={[styles.button, elementStyles]}
     >
-      {children}
+      {props.children || (
+        <Text
+          adjustsFontSizeToFit
+          textAlign="center"
+          size={sizes.buttonText}
+          style={props.textStyle}
+          color={textColor}
+        >
+          {props.text || ''}
+        </Text>
+      )}
     </Ripple>
   );
 }

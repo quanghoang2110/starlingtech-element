@@ -12,7 +12,7 @@ import {
   StarlingContainer,
 } from '@starlingtech/element';
 import { useAppColor } from './color';
-import light from '../vn.starlingTech/theme/light';
+import light from '../vn.starlingTech/theme/color/light';
 // import { useTheme } from '../../src/hook/contextHook';
 // import { AppImage } from '@starlingtech/element/image';
 
@@ -79,7 +79,7 @@ export default function App() {
             text="aaa"
             primary
             width={330}
-            radius={12}
+            // radius={100}
             mt={30}
           />
         </AppBlock>

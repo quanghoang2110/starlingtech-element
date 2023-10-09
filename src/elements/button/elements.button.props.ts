@@ -1,12 +1,9 @@
 import { handleStarlingStyle, type ElementProps } from '../element.props';
 import type { ViewStyle } from 'react-native';
 import type { TextStyle } from 'react-native';
-import type {
-  StarlingColorScheme,
-  StarlingColorSchemeKey,
-} from '../../theme/color';
 import { appSize } from '../../helper/sizeHelper';
 import type { TouchableWithoutFeedbackProps } from 'react-native';
+import type { StarlingColorScheme } from '../../starlingTheme';
 
 export interface ButtonProps
   extends ElementProps,
@@ -14,7 +11,7 @@ export interface ButtonProps
   block?: boolean;
   processing?: boolean;
   text?: string;
-  textColor?: StarlingColorSchemeKey;
+  textColor?: keyof StarlingColorScheme;
   textDisabledColor?: string;
   textStyle?: TextStyle;
   disabledStyle?: ViewStyle;

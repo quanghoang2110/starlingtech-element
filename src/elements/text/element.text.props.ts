@@ -1,12 +1,9 @@
 import { StyleSheet } from 'react-native';
-import type {
-  StarlingColorScheme,
-  StarlingColorSchemeKey,
-} from '../../theme/color';
 import { sizes, type fonts } from '../../theme/theming';
 import { handleStarlingStyle, type ElementProps } from '../element.props';
 import type { TextProps } from 'react-native';
 import type { TextStyle } from 'react-native';
+import type { StarlingColorScheme } from '../../starlingTheme';
 
 export interface ElementTextProps extends ElementProps, TextProps {
   size?: number;
@@ -23,7 +20,7 @@ export interface ElementTextProps extends ElementProps, TextProps {
     | '800'
     | '900'
     | undefined;
-  color?: StarlingColorSchemeKey;
+  color?: keyof StarlingColorScheme;
   transform?: 'none' | 'capitalize' | 'uppercase' | 'lowercase';
   textAlign?: 'left' | 'center' | 'right' | undefined;
   letterSpacing?: number;

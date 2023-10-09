@@ -11,6 +11,9 @@ import {
   KeyboardDismiss,
   StarlingContainer,
 } from '@starlingtech/element';
+import { useAppColor } from './color';
+import light from '../vn.starlingTech/theme/light';
+// import { useTheme } from '../../src/hook/contextHook';
 // import { AppImage } from '@starlingtech/element/image';
 
 export default function App() {
@@ -39,15 +42,22 @@ export default function App() {
     return undefined;
   };
 
+  const { colors } = useAppColor();
+
   return (
-    <StarlingContainer>
+    <StarlingContainer
+      theme={{
+        colors: light,
+      }}
+    >
       <KeyboardDismiss flex>
         {/* <AppImage /> */}
         <AppBlock flex center background="white" ph={16}>
           <Text>Result: {result}</Text>
-          <AppText size={20} color="danger">
+          <AppText size={20} style={{ color: colors.primary1 }}>
             Result???
           </AppText>
+          <AppText color={'primary'}>TEST COLOR</AppText>
           {/* <OverlayLoading visible /> */}
           <AppButton onPress={() => {}}>
             <AppText>aaa</AppText>

@@ -1,7 +1,7 @@
-import type { StarlingColorScheme } from '../starlingTheme';
-
-const color: StarlingColorScheme = {
+const light = {
   primary: '#6200EE',
+  primary1: 'red',
+  yellow: 'yellow',
   accent: '#6200EE',
   secondary: '#1EB8FE',
   background: '#f6f6f6',
@@ -31,4 +31,4 @@ const color: StarlingColorScheme = {
   skeletonHighlight: '#f1f2f3',
 };
 
-export default color;
+export default light;

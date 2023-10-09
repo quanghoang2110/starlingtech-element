@@ -1,7 +1,7 @@
 import { StyleSheet, type ViewProps } from 'react-native';
 
 import { type ElementProps, handleStarlingStyle } from '../element.props';
-import type { StarlingColorScheme } from '../../theme/color';
+import type { StarlingColorScheme } from '../../starlingTheme';
 
 export interface BlockProps extends ElementProps, ViewProps {
   center?: boolean;

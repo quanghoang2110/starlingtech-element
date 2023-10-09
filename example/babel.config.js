@@ -14,7 +14,8 @@ module.exports = function (api) {
           alias: {
             // For development, we want to alias the library to the source
             [pak.name]: path.join(__dirname, '..', pak.source),
-            '@starling/config': './starling.json',
+            '@starling/config': './vn.starlingTech/starling.json',
+            '@starling/theme': './vn.starlingTech/theme/type.ts',
           },
         },
       ],

@@ -5,12 +5,9 @@ import {
   handleMargin,
   handlePadding,
 } from '../helper/utilHelper';
-import type {
-  StarlingColorScheme,
-  StarlingColorSchemeKey,
-} from '../theme/color';
 import { sizes } from '../theme/theming';
 import { appSize } from '../helper/sizeHelper';
+import type { StarlingColorScheme } from '../starlingTheme';
 
 export interface ElementProps {
   radius?: number | boolean;
@@ -19,7 +16,7 @@ export interface ElementProps {
   margin?: boolean | number | `${number}%` | number[];
   padding?: boolean | number | number[];
   flex?: number | boolean;
-  background?: StarlingColorSchemeKey;
+  background?: keyof StarlingColorScheme;
   border?: boolean | number | number[];
   ph?: number | `${number}%`;
   pv?: number | `${number}%`;

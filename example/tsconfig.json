@@ -1,6 +1,10 @@
 {
   "extends": "../tsconfig",
   "compilerOptions": {
-    // Avoid expo-cli auto-generating a tsconfig
+    "baseUrl": ".",
+    "paths": {
+      "@starlingtech/element": ["../src"],
+      "@starling/theme": ["vn.starlingTech/theme/type.ts"]
+    }
   }
 }

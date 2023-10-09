@@ -1,6 +1,6 @@
-import type { StarlingColorSchemeKey } from './color';
+import type { StarlingColorScheme } from '../starlingTheme';
 
-const dark: Record<StarlingColorSchemeKey, string> = {
+const dark: StarlingColorScheme = {
   primary: '#000000',
   accent: '#6200EE',
   secondary: '#1EB8FE',
@@ -16,7 +16,6 @@ const dark: Record<StarlingColorSchemeKey, string> = {
   buttonText: '#333333',
   white: '#FFFFFF',
   black: '#000000',
-  //custom
   danger: '#FF2D55',
   success: '#18d676',
   warning: '#F0C330',
@@ -27,14 +26,7 @@ const dark: Record<StarlingColorSchemeKey, string> = {
   inputBackground: '#F4F6FB',
   inputBorder: '#848484',
   inputDisabled: '#f5f6f7',
-  //
   required: '#FF2D55',
-  grey0: '#393e42',
-  grey1: '#43484d',
-  grey2: '#5e6977',
-  grey3: '#86939e',
-  grey4: '#bdc6cf',
-  grey5: '#e1e8ee',
   skeleton: '#e4e6eb',
   skeletonHighlight: '#f1f2f3',
 };

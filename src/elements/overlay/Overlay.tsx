@@ -4,11 +4,11 @@ import { StyleSheet } from 'react-native';
 import { useThemeContext } from '../../hook/contextHook';
 import Block from '../block/Block';
 import Text from '../text/Text';
-import type { StarlingColorSchemeKey } from '../../theme/color';
+import type { StarlingColorScheme } from '../../starlingTheme';
 
 type Props = {
   visible: boolean;
-  color?: string;
+  color?: keyof StarlingColorScheme;
   backdropColor?: string;
   zIndex?: number;
   message?: string;
@@ -36,7 +36,7 @@ const OverlayLoading = ({
       >
         <ActivityIndicator color={color || 'white'} />
         {message ? (
-          <Text mt={12} color={(color as StarlingColorSchemeKey) || 'white'}>
+          <Text mt={12} color={color || 'white'}>
             {message}
           </Text>
         ) : null}

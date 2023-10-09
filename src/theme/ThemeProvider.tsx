@@ -6,7 +6,7 @@ import color from './color';
 import { fonts } from './theming';
 
 type Props = {
-  value?: StarlingTheme;
+  value?: Partial<StarlingTheme>;
   children: React.ReactNode;
 };
 

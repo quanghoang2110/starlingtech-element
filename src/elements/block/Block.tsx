@@ -20,7 +20,7 @@ class Block extends Component<BlockProps> {
     const { colors } = this.context;
     const { elementProps, elementStyles } = handleBlockStarlingStyle(
       this.props,
-      colors
+      colors!
     );
     return (
       <View {...elementProps} style={elementStyles}>

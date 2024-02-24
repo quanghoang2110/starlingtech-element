@@ -59,7 +59,7 @@ export interface ElementProps {
   wrap?: boolean;
 }
 
-export function handleStarlingStyle<T extends ElementProps>(
+export function handleStarlingStyle<T extends ElementProps & { style?: any }>(
   props: T,
   color: StarlingColorScheme
 ) {
@@ -209,7 +209,7 @@ export function handleStarlingStyle<T extends ElementProps>(
 
   return {
     elementProps: tempProps,
-    elementStyles: StyleSheet.flatten(tempStyles),
+    elementStyles: StyleSheet.flatten([tempStyles, props.style]),
   };
 }
 

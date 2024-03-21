@@ -1,17 +1,18 @@
 import React, { PureComponent } from 'react';
-import type { LayoutChangeEvent } from 'react-native';
-import type { GestureResponderEvent } from 'react-native';
-import type { TouchableWithoutFeedbackProps } from 'react-native';
+import type {
+  LayoutChangeEvent,
+  GestureResponderEvent,
+  TouchableWithoutFeedbackProps,
+} from 'react-native';
 import {
   View,
   Animated,
   Easing,
   Platform,
-  TouchableWithoutFeedback,
   I18nManager,
+  StyleSheet,
+  TouchableWithoutFeedback,
 } from 'react-native';
-
-import { StyleSheet } from 'react-native';
 
 interface Props extends TouchableWithoutFeedbackProps {
   rippleColor?: string;

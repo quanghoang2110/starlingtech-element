@@ -7,19 +7,11 @@ import {
   handleButtonStarlingStyle,
   type ButtonProps,
 } from './elements.button.props';
-import ButtonLoading from './ButtonLoading';
+import ButtonLoading, { type ButtonLoadingProps } from './ButtonLoading';
 import Text from '../text/Text';
 import { StyleSheet } from 'react-native';
 
-type Props = ButtonProps &
-  (
-    | { processing?: undefined }
-    | {
-        processing: boolean;
-        width: number;
-        height: number;
-      }
-  );
+type Props = ButtonProps & ({ processing?: undefined } | ButtonLoadingProps);
 
 export default function Button(props: Props) {
   const { colors } = useThemeContext();
@@ -44,7 +36,11 @@ export default function Button(props: Props) {
       rippleContainerBorderRadius={
         typeof props.radius === 'boolean' ? sizes.radius : props.radius
       }
-      style={[styles.button, elementStyles]}
+      style={[
+        styles.button,
+        elementStyles,
+        props.disabled && props.disabledStyle,
+      ]}
     >
       {props.children || (
         <Text
@@ -64,6 +60,7 @@ export default function Button(props: Props) {
 Button.defaultProps = {
   width: sizes.buttonWidth,
   height: sizes.buttonHeight,
+  disabledOpacity: sizes.buttonDisabledOpacity,
   // radius: sizes.buttonRadius,
 };
 

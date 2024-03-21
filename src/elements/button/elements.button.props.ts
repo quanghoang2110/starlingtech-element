@@ -4,6 +4,7 @@ import type { TextStyle } from 'react-native';
 import { appSize } from '../../helper/sizeHelper';
 import type { TouchableWithoutFeedbackProps } from 'react-native';
 import type { StarlingColorScheme } from '../../starlingTheme';
+import { sizes } from '../../theme/theming';
 
 export interface ButtonProps
   extends ElementProps,
@@ -13,7 +14,6 @@ export interface ButtonProps
   textColor?: keyof StarlingColorScheme;
   textDisabledColor?: string;
   textStyle?: TextStyle;
-  disabledStyle?: ViewStyle;
   rippleColor?: string;
   rippleOpacity?: number;
   rippleDuration?: number;
@@ -26,6 +26,8 @@ export interface ButtonProps
   row?: boolean;
   column?: boolean;
   primary?: boolean;
+  disabledStyle?: ViewStyle;
+  disabledOpacity?: number;
 }
 
 export function handleButtonStarlingStyle(
@@ -54,6 +56,10 @@ export function handleButtonStarlingStyle(
     tempStyles.alignItems = 'center';
     tempStyles.justifyContent = 'center';
     delete tempProps.center;
+  }
+
+  if (props.disabled) {
+    tempStyles.opacity = props.disabledOpacity ?? sizes.buttonDisabledOpacity;
   }
 
   return {

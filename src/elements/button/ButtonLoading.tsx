@@ -17,17 +17,28 @@ import { appSize } from '../../helper/sizeHelper';
 import { sizes } from '../../theme/theming';
 import Text from '../text/Text';
 import { StyleSheet } from 'react-native';
+import Block from '../block/Block';
 
-interface Props extends ButtonProps {
+export interface ButtonLoadingProps extends ButtonProps {
   width: number;
   height: number;
+  animateWidth?: number;
+  animateRadius?: number;
+  animateOpacity?: number;
+  animateCenter?: boolean;
 }
 
 const AnimatedText = Animated.createAnimatedComponent(Text);
 const AnimatedButton = Animated.createAnimatedComponent(Ripple);
 
-export default function ButtonLoading(props: Props) {
-  const { processing, width, height } = props;
+export default function ButtonLoading(props: ButtonLoadingProps) {
+  const {
+    processing,
+    width,
+    height,
+    animateRadius = sizes.animateButtonRadius,
+    animateOpacity = sizes.animateButtonOpacity,
+  } = props;
   const maxWidth = appSize(width);
   const { colors } = useThemeContext();
 
@@ -38,10 +49,20 @@ export default function ButtonLoading(props: Props) {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const minWidth = height ? appSize(height) : Platform.OS === 'ios' ? 60 : 50;
+  const minWidth = props.animateWidth
+    ? appSize(props.animateWidth)
+    : height
+    ? appSize(height)
+    : Platform.OS === 'ios'
+    ? 60
+    : 50;
 
   useEffect(() => {
-    setIsLoading(processing || false);
+    if (processing) {
+      setIsLoading(true);
+    } else {
+      setTimeout(() => setIsLoading(false), 1200);
+    }
   }, [processing]);
 
   const animTextStyle = useAnimatedStyle(() => {
@@ -78,25 +99,45 @@ export default function ButtonLoading(props: Props) {
 
   const animStyle = useAnimatedStyle(() => {
     return {
-      borderRadius: withTiming(isLoading ? 100 : borderRadius, {
+      borderRadius: withTiming(isLoading ? animateRadius : borderRadius, {
         duration: 650,
       }),
       width: withTiming(isLoading ? minWidth : maxWidth, {
         duration: 450,
       }),
-      opacity: withTiming(isLoading ? 0.9 : 1, { duration: 450 }),
+      // left: withTiming(isLoading ? (maxWidth - minWidth) / 2 : 0, {
+      //   duration: 450,
+      // }),
+      opacity: props.disabled
+        ? props.disabledOpacity
+        : withTiming(isLoading ? animateOpacity : 1, {
+            duration: 450,
+          }),
     };
-  }, [isLoading]);
+  }, [
+    isLoading,
+    animateOpacity,
+    animateRadius,
+    props.disabled,
+    props.disabledOpacity,
+  ]);
 
   return (
-    <AnimatedButton
-      {...elementProps}
-      rippleContainerBorderRadius={borderRadius}
-      disabled={props.disabled || props.processing || isLoading}
-      style={[styles.button, elementStyles, animStyle]}
-    >
-      {children}
-    </AnimatedButton>
+    <Block center={props.animateCenter}>
+      <AnimatedButton
+        {...elementProps}
+        rippleContainerBorderRadius={borderRadius}
+        disabled={props.disabled || props.processing || isLoading}
+        style={[
+          styles.button,
+          elementStyles,
+          animStyle,
+          props.disabled && props.disabledStyle,
+        ]}
+      >
+        {children}
+      </AnimatedButton>
+    </Block>
   );
 }
 
@@ -104,6 +145,9 @@ ButtonLoading.defaultProps = {
   width: sizes.buttonWidth,
   height: sizes.buttonHeight,
   radius: sizes.radius,
+  animateCenter: true,
+  animateRadius: sizes.animateButtonRadius,
+  animateOpacity: sizes.animateButtonOpacity,
 };
 
 const styles = StyleSheet.create({

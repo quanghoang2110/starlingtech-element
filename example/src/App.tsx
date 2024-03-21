@@ -53,7 +53,7 @@ export default function App() {
     >
       <KeyboardDismiss flex>
         {/* <AppImage /> */}
-        <AppBlock flex center background="white" ph={16}>
+        <AppBlock flex background="white" ph={16}>
           <Text>Result: {result}</Text>
           <AppText size={20} style={{ color: colors.primary1 }}>
             Result???
@@ -81,11 +81,12 @@ export default function App() {
             label="Password"
           /> */}
           <AppButton
+            // disabled={processing}
             processing={processing}
             onPress={onPress}
             text="aaa"
             primary
-            width={330}
+            // width={330}
             // radius={100}
             mt={30}
           />

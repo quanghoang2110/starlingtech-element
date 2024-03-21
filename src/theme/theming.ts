@@ -12,6 +12,9 @@ export const sizes = {
   buttonHeight: 44,
   buttonRadius: 8,
   buttonText: 14,
+  buttonDisabledOpacity: 0.5,
+  animateButtonRadius: 100,
+  animateButtonOpacity: 0.9,
   //input
   input: 14,
   inputHeight: 50,

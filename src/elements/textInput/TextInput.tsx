@@ -120,7 +120,15 @@ const TextInput = React.forwardRef(
           requiredLabel={requiredLabel}
         />
         <Block>
-          <Block>
+          <Block
+            row
+            style={[
+              formStyles.inputView,
+              {
+                borderColor: colors.inputBorder,
+              },
+            ]}
+          >
             {props.leftIcon}
             <RNTextInput
               {...elementProps}
@@ -129,11 +137,11 @@ const TextInput = React.forwardRef(
               secureTextEntry={!passwordShowing}
               value={value}
               style={[
-                formStyles.inputView,
+                formStyles.input,
                 {
                   color: colors.inputTextColor,
-                  borderColor: colors.inputBorder,
                 },
+                props.leftIcon && formStyles.inputWithLeftIcon,
                 elementStyles,
                 resetVisible &&
                   props.secureTextEntry !== undefined &&

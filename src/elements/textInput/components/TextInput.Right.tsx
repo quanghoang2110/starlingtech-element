@@ -43,12 +43,12 @@ export default function TextInputRight(props: AppInputRightProps) {
 
   if (props.rightIcon !== undefined) {
     return (
-      <Animated.View
-        entering={FadeInRight}
-        exiting={FadeOutRight}
-        key={'right-icon-1'}
-      >
-        <Block style={styles.container} center>
+      <Block style={styles.container} center mr={5}>
+        <Animated.View
+          entering={FadeInRight}
+          exiting={FadeOutRight}
+          key={'right-icon-1'}
+        >
           {resetVisible ? (
             <TouchableOpacity onPress={onResetValue}>
               <Asset name="close" />
@@ -56,8 +56,8 @@ export default function TextInputRight(props: AppInputRightProps) {
           ) : (
             rightIcon
           )}
-        </Block>
-      </Animated.View>
+        </Animated.View>
+      </Block>
     );
   }
 

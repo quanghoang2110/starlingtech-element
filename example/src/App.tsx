@@ -13,7 +13,7 @@ import {
 } from '@starlingtech/element';
 import { useAppColor } from './color';
 import light from '../vn.starlingTech/theme/color/light';
-import IconSearch from '../assets/IconSearch';
+// import IconSearch from '../assets/IconSearch';
 // import { useTheme } from '../../src/hook/contextHook';
 // import { AppImage } from '@starlingtech/element/image';
 
@@ -74,12 +74,12 @@ export default function App() {
             nextInput={refInput2}
           />
           <AppTextInput ref={refInput2} secureTextEntry label="Password" />
-          <AppTextInput
+          {/* <AppTextInput
             leftIcon={<IconSearch />}
             rightIcon={<IconSearch />}
             ref={refInput2}
             label="Password"
-          />
+          /> */}
           <AppButton
             processing={processing}
             onPress={onPress}

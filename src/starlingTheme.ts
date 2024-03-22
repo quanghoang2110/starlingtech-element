@@ -6,7 +6,7 @@ import {
   UI_HEIGHT,
 } from '@starling/theme';
 
-export type StarlingColorScheme = ColorScheme;
+export interface StarlingColorScheme extends ColorScheme {}
 
 const starlingSizes = sizes;
 const starlingFonts = fonts;

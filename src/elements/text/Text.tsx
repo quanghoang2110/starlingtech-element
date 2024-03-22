@@ -1,24 +1,19 @@
 import React, { Component } from 'react';
 import { Text as RNText } from 'react-native';
 
-import {
-  handleTextStarlingStyle,
-  type ElementTextProps,
-} from './element.text.props';
+import { type AppTextProps } from './TextProps';
 import StarlingThemeContext from '../../theme/ThemeContext';
 import type { StarlingTheme } from '../../theme/type';
+import { handleTextStarlingStyle } from '../../helper/styleHelper';
+import type { TextProps } from 'react-native';
 
-export default class Text extends Component<ElementTextProps> {
+export class AppText extends Component<AppTextProps & TextProps> {
   static contextType = StarlingThemeContext;
   static defaultProps = {
     allowFontScaling: false,
   };
 
   context: StarlingTheme = {} as StarlingTheme;
-
-  constructor(props: ElementTextProps) {
-    super(props);
-  }
 
   render() {
     const { elementProps, elementStyles } = handleTextStarlingStyle(

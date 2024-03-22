@@ -3,17 +3,13 @@ import React from 'react';
 import Ripple from './Ripple';
 import { useThemeContext } from '../../hook/contextHook';
 import { sizes } from '../../theme/theming';
-import {
-  handleButtonStarlingStyle,
-  type ButtonProps,
-} from './elements.button.props';
-import ButtonLoading, { type ButtonLoadingProps } from './ButtonLoading';
-import Text from '../text/Text';
+import { type AppButtonProps } from './ButtonProps';
+import ButtonLoading from './ButtonLoading';
+import { AppText } from '../text/Text';
 import { StyleSheet } from 'react-native';
+import { handleButtonStarlingStyle } from '../../helper/styleHelper';
 
-type Props = ButtonProps & ({ processing?: undefined } | ButtonLoadingProps);
-
-export default function Button(props: Props) {
+export function AppButton(props: AppButtonProps) {
   const { colors } = useThemeContext();
 
   if (props?.processing !== undefined) {
@@ -43,7 +39,7 @@ export default function Button(props: Props) {
       ]}
     >
       {props.children || (
-        <Text
+        <AppText
           adjustsFontSizeToFit
           textAlign="center"
           size={sizes.buttonText}
@@ -51,13 +47,13 @@ export default function Button(props: Props) {
           color={textColor}
         >
           {props.text || ''}
-        </Text>
+        </AppText>
       )}
     </Ripple>
   );
 }
 
-Button.defaultProps = {
+AppButton.defaultProps = {
   width: sizes.buttonWidth,
   height: sizes.buttonHeight,
   disabledOpacity: sizes.buttonDisabledOpacity,

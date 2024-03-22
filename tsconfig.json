@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
+    "target": "es2015",
     "rootDir": ".",
     "paths": {
       "@starlingtech/element": ["./src/index"],
-      "@starlingtech/element/image": ["./src/image"],
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
@@ -23,7 +23,8 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext",
-    "verbatimModuleSyntax": true,
-  }
+    // "target": "esnext",
+    "verbatimModuleSyntax": true
+  },
+  "exclude": ["node_modules"]
 }

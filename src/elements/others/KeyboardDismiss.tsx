@@ -2,13 +2,15 @@ import React from 'react';
 import { Keyboard, Pressable, StyleSheet } from 'react-native';
 import { useKeyboard } from '../../hook/keyboardHook';
 
-type Props = {
+export type KeyboardDismissProps = {
   children: React.ReactNode;
   disabled?: boolean;
   flex?: boolean;
 };
 
-const KeyboardDismiss: React.FunctionComponent<Props> = (props) => {
+const KeyboardDismiss: React.FunctionComponent<KeyboardDismissProps> = (
+  props
+) => {
   const { keyboardVisible } = useKeyboard();
 
   return (
@@ -21,7 +23,7 @@ const KeyboardDismiss: React.FunctionComponent<Props> = (props) => {
     </Pressable>
   );
 };
-export default KeyboardDismiss;
+export { KeyboardDismiss };
 const styles = StyleSheet.create({
   fill: { flex: 1 },
 });

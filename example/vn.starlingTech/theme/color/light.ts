@@ -23,7 +23,7 @@ const light = {
   border: '#e9e9e9',
   icon: '#999999',
   inputTextColor: '#000000',
-  inputBackground: '#F4F6FB',
+  inputBackground: '#ffffff',
   inputBorder: '#848484',
   inputDisabled: '#f5f6f7',
   required: '#FF2D55',

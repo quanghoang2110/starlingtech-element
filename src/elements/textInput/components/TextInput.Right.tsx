@@ -2,7 +2,7 @@ import React, { type ReactElement } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { useThemeContext } from '../../../hook/contextHook';
-import Block from '../../block/Block';
+import { AppBlock } from '../../block/Block';
 import formStyles from '../styles';
 import { TouchableOpacity } from 'react-native';
 import { Asset } from '../../../assets/Asset';
@@ -43,7 +43,7 @@ export default function TextInputRight(props: AppInputRightProps) {
 
   if (props.rightIcon !== undefined) {
     return (
-      <Block style={styles.container} center mr={5}>
+      <AppBlock style={styles.container} center mr={5}>
         <Animated.View
           entering={FadeInRight}
           exiting={FadeOutRight}
@@ -57,12 +57,12 @@ export default function TextInputRight(props: AppInputRightProps) {
             rightIcon
           )}
         </Animated.View>
-      </Block>
+      </AppBlock>
     );
   }
 
   return (
-    <Block
+    <AppBlock
       style={[styles.container, props.secureTextEntry && styles.container2]}
       center
       row
@@ -85,7 +85,7 @@ export default function TextInputRight(props: AppInputRightProps) {
             (iconHidePassword ?? <Asset name="eye" color={iconColor} />)}
         </TouchableOpacity>
       )}
-    </Block>
+    </AppBlock>
   );
 }
 
@@ -101,7 +101,8 @@ const styles = StyleSheet.create({
     height: '100%',
     justifyContent: 'flex-end',
     position: 'absolute',
-    right: 5,
-    width: 70,
+    right: 0,
+    paddingRight: 5,
+    minWidth: 50,
   },
 });

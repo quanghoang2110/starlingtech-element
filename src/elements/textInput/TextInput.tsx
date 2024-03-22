@@ -2,20 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, TextInput as RNTextInput } from 'react-native';
 import { useThemeContext } from '../../hook/contextHook';
 import { isValidEmail } from '@starlingtech/util';
-import Block from '../block/Block';
+import { AppBlock } from '../block/Block';
 import { TextInputLabel } from './components/TextInput.Label';
 import formStyles from './styles';
 import TextInputRight from './components/TextInput.Right';
 import TextInputMessage from './components/TextInput.Message';
-import {
-  handleTextInputProps,
-  type ElementTextInputProps,
-} from './textInput.props';
+import { type AppTextInputProps } from './TextInputProps';
+import { handleTextInputProps } from '../../helper/styleHelper';
+import type { TextInputProps } from 'react-native';
 
-const TextInput = React.forwardRef(
+const AppTextInput = React.forwardRef(
   (
-    props: ElementTextInputProps,
-    ref: React.LegacyRef<RNTextInput> | undefined
+    props: AppTextInputProps & TextInputProps,
+    ref?: React.LegacyRef<RNTextInput>
   ) => {
     const { colors } = useThemeContext();
 
@@ -43,19 +42,26 @@ const TextInput = React.forwardRef(
 
     const onChangeText = (text: string) => {
       setValue(text);
+      let _hasError = false;
       if (required) {
-        const hasError = !text;
-        setError(hasError);
-        setErrorMessage(hasError ? 'This field is required' : '');
+        _hasError = !text;
+        setError(_hasError);
+        setErrorMessage(
+          _hasError ? props.requiredMessage ?? 'This field is required' : ''
+        );
       }
 
-      if (text && props.email) {
-        const hasError = isValidEmail(text) === false;
-        setError(hasError);
-        setErrorMessage(hasError ? 'Please enter a valid email' : '');
+      if (!_hasError && text && props.email) {
+        _hasError = isValidEmail(text) === false;
+        setError(_hasError);
+        setErrorMessage(
+          _hasError
+            ? props.invalidEmailMessage ?? 'Please enter a valid email'
+            : ''
+        );
       }
 
-      if (props.onValidate !== undefined) {
+      if (!_hasError && props.onValidate !== undefined) {
         const _validateMsg = props.onValidate(text);
         setError(Boolean(_validateMsg));
         setErrorMessage(_validateMsg || '');
@@ -100,7 +106,7 @@ const TextInput = React.forwardRef(
     const { elementProps, elementStyles } = handleTextInputProps(props);
 
     return (
-      <Block
+      <AppBlock
         {...props}
         width={undefined}
         height={undefined}
@@ -119,14 +125,21 @@ const TextInput = React.forwardRef(
           required={required}
           requiredLabel={requiredLabel}
         />
-        <Block>
-          <Block
+        <AppBlock flex={props.inline}>
+          <AppBlock
             row
             style={[
               formStyles.inputView,
               {
                 borderColor: colors.inputBorder,
+                backgroundColor: colors.inputBackground,
               },
+              editable === false && {
+                backgroundColor: colors.inputDisabled,
+              },
+              focused && { borderColor: colors.primary },
+              error && { borderColor: errorColor },
+              props.noBorder && styles.noBorder,
             ]}
           >
             {props.leftIcon}
@@ -146,9 +159,6 @@ const TextInput = React.forwardRef(
                 resetVisible &&
                   props.secureTextEntry !== undefined &&
                   styles.securePadding,
-                focused && { borderColor: colors.primary },
-                error && { borderColor: errorColor },
-                props.noBorder && styles.noBorder,
               ]}
               placeholderTextColor={
                 props.placeholderTextColor ?? colors.placeholder
@@ -172,17 +182,17 @@ const TextInput = React.forwardRef(
               iconColor={props.iconColor}
               rightIcon={props.rightIcon}
             />
-          </Block>
+          </AppBlock>
           {!props.noHelper && (
             <TextInputMessage color={errorColor} message={errorMessage} />
           )}
-        </Block>
-      </Block>
+        </AppBlock>
+      </AppBlock>
     );
   }
 );
 
-export default TextInput;
+export { AppTextInput };
 
 const styles = StyleSheet.create({
   securePadding: { paddingRight: 70 },

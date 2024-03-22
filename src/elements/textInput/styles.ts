@@ -13,18 +13,20 @@ export default StyleSheet.create({
     marginTop: appSize(6),
   },
   inline: {
-    alignItems: 'center',
+    // alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  inlineLabel: { marginRight: appSize(sizes.padding), width: 122 },
+  inlineLabel: {
+    marginRight: appSize(sizes.padding),
+    height: appSize(sizes.inputHeight),
+    alignItems: 'center',
+  },
   inputView: {
     borderRadius: appSize(sizes.inputRadius),
-    borderWidth: 1,
+    borderWidth: sizes.inputBorder,
     maxWidth: appSize(sizes.inputMaxWidth),
-    paddingLeft: appSize(sizes.inputHorizontalPadding),
-    paddingRight: 45,
-    width: '100%',
+    // width: '100%',
     alignItems: 'center',
   },
   input: {
@@ -34,14 +36,14 @@ export default StyleSheet.create({
     fontSize: appSize(sizes.text),
     fontFamily: fonts?.regular,
     height: appSize(sizes.inputHeight),
+    paddingLeft: appSize(sizes.inputHorizontalPadding),
+    paddingRight: 45,
   },
   inputWithLeftIcon: {
     marginLeft: appSize(5),
   },
   item: { width: '100%' },
-  itemInputInLine: { flexDirection: 'row', width: 120 },
   labelContainer: { flexDirection: 'row', marginBottom: 9 },
-  radius5: { borderRadius: 5, paddingHorizontal: 7 },
   rightIcon: {
     width: 32,
   },

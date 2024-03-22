@@ -4,13 +4,15 @@ import {
   TouchableOpacity as RNTouchableOpacity,
   TouchableWithoutFeedback,
 } from 'react-native';
-import { handleStarlingStyle, type ElementProps } from '../element.props';
 import { useThemeContext } from '../../hook/contextHook';
+import { handleStarlingStyle } from '../../helper/styleHelper';
+import type { AppPressableProps } from './ButtonProps';
 import type { TouchableOpacityProps } from 'react-native';
 
-interface Props extends ElementProps, TouchableOpacityProps {
-  sentryLabel?: string;
-}
+type Props = AppPressableProps &
+  TouchableOpacityProps & {
+    sentryLabel?: string;
+  };
 
 export function AppTouchableOpacity(props: Props) {
   const { colors } = useThemeContext();

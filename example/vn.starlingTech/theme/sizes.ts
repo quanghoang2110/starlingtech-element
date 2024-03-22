@@ -3,7 +3,7 @@ export const sizes = {
   radius: 6,
   margin: 16,
   padding: 16,
-  hint: 13,
+  hint: 12,
   icon: 24,
   //button
   buttonWidth: 330,
@@ -15,6 +15,7 @@ export const sizes = {
   animateButtonOpacity: 1,
   //input
   input: 14,
+  inputBorder: 1,
   inputHeight: 50,
   inputRadius: 9,
   inputMaxWidth: 600,

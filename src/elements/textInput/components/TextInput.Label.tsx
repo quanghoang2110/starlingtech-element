@@ -1,6 +1,6 @@
 import React from 'react';
-import Block from '../../block/Block';
-import Text from '../../text/Text';
+import { AppBlock } from '../../block/Block';
+import { AppText } from '../../text/Text';
 import type { StyleProp, TextStyle } from 'react-native';
 import styles from '../styles';
 
@@ -10,6 +10,7 @@ type AppInputLabelProps = {
   label?: string;
   labelStyle?: StyleProp<TextStyle>;
   inline?: boolean;
+  hasError?: boolean;
 };
 
 export function TextInputLabel({
@@ -24,11 +25,11 @@ export function TextInputLabel({
   }
 
   return (
-    <Block style={[styles.labelContainer, inline && styles.inlineLabel]}>
-      <Text style={labelStyle}>{label}</Text>
+    <AppBlock style={[styles.labelContainer, inline && styles.inlineLabel]}>
+      <AppText style={labelStyle}>{label}</AppText>
       {requiredLabel && required ? (
-        <Text color={'required'}>{' *'}</Text>
+        <AppText color={'required'}>{' *'}</AppText>
       ) : null}
-    </Block>
+    </AppBlock>
   );
 }

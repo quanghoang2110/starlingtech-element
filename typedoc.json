@@ -1,0 +1,25 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "./src/elements/button/Button.tsx",
+    "./src/elements/button/ButtonProps.ts",
+    "./src/elements/button/Pressable.tsx",
+    "./src/elements/divider/Divider.tsx",
+    "./src/elements/others/KeyboardDismiss.tsx",
+    "./src/elements/overlay/Overlay.tsx",
+    "./src/elements/skeleton/Skeleton.tsx",
+    "./src/elements/block/**",
+    "./src/elements/text/**",
+    "./src/elements/textInput/TextInput.tsx",
+    "./src/elements/textInput/TextInputProps.ts",
+    "./src/helper/sizeHelper.ts",
+    "./src/hook/contextHook.ts",
+    "./src/starlingTheme.ts",
+    "./src/theme/theming.ts"
+  ],
+  "intentionallyNotExported": [
+    "InternalClass",
+    "src/element/text/element.text.props.ts:TextProps"
+  ],
+  "out": "doc"
+}

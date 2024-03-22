@@ -6,7 +6,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import type { TextStyle } from 'react-native';
 import { sizes } from '../../../theme/theming';
-import Text from '../../text/Text';
+import { AppText } from '../../text/Text';
 import { appSize } from '../../../helper/sizeHelper';
 
 type Props = {
@@ -20,16 +20,21 @@ const TextInputMessage = (props: Props) => {
   const marginTop =
     style?.marginTop && typeof style.marginTop === 'number'
       ? style.marginTop
-      : 10;
+      : 5;
 
   const animStyle = useAnimatedStyle(() => {
     return {
-      minHeight: withTiming(message ? 10 : 0, { duration: 300 }),
+      height: withTiming(message ? sizes.hint * 1.6 : 0, { duration: 300 }),
       marginTop: withTiming(message ? marginTop : 0, {
         duration: 200,
       }),
+      opacity: withTiming(message ? 1 : 0, { duration: 300 }),
     };
   }, [message, marginTop]);
+
+  // if (!message) {
+  //   return null;
+  // }
 
   return (
     <AnimatedText style={[styles.helperTxt, style, { color }, animStyle]}>
@@ -38,7 +43,7 @@ const TextInputMessage = (props: Props) => {
   );
 };
 
-const AnimatedText = Animated.createAnimatedComponent(Text);
+const AnimatedText = Animated.createAnimatedComponent(AppText);
 
 export default TextInputMessage;
 

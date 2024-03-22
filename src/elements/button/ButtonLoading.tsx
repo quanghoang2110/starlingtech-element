@@ -9,26 +9,15 @@ import Animated, {
 import Ripple from './Ripple';
 import { ActivityIndicator } from 'react-native';
 import { useThemeContext } from '../../hook/contextHook';
-import {
-  handleButtonStarlingStyle,
-  type ButtonProps,
-} from './elements.button.props';
+import { type ButtonLoadingProps } from './ButtonProps';
 import { appSize } from '../../helper/sizeHelper';
 import { sizes } from '../../theme/theming';
-import Text from '../text/Text';
+import { AppText } from '../text/Text';
 import { StyleSheet } from 'react-native';
-import Block from '../block/Block';
+import { AppBlock } from '../block/Block';
+import { handleButtonStarlingStyle } from '../../helper/styleHelper';
 
-export interface ButtonLoadingProps extends ButtonProps {
-  width: number;
-  height: number;
-  animateWidth?: number;
-  animateRadius?: number;
-  animateOpacity?: number;
-  animateCenter?: boolean;
-}
-
-const AnimatedText = Animated.createAnimatedComponent(Text);
+const AnimatedText = Animated.createAnimatedComponent(AppText);
 const AnimatedButton = Animated.createAnimatedComponent(Ripple);
 
 export default function ButtonLoading(props: ButtonLoadingProps) {
@@ -123,7 +112,7 @@ export default function ButtonLoading(props: ButtonLoadingProps) {
   ]);
 
   return (
-    <Block center={props.animateCenter}>
+    <AppBlock center={props.animateCenter}>
       <AnimatedButton
         {...elementProps}
         rippleContainerBorderRadius={borderRadius}
@@ -137,7 +126,7 @@ export default function ButtonLoading(props: ButtonLoadingProps) {
       >
         {children}
       </AnimatedButton>
-    </Block>
+    </AppBlock>
   );
 }
 

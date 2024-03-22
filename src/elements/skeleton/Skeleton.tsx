@@ -8,10 +8,10 @@ import {
 } from 'react-native';
 
 import { useThemeContext } from '../../hook/contextHook';
-import Block from '../block/Block';
-import type { BlockProps } from '../block/element.block.props';
+import { AppBlock } from '../block/Block';
+import type { AppBlockProps } from '../block/BlockProps';
 
-export interface SkeletonProps extends BlockProps {
+export interface SkeletonProps extends AppBlockProps {
   /**
    * show circular variant
    */
@@ -26,7 +26,7 @@ export interface SkeletonProps extends BlockProps {
   skeletonStyle?: StyleProp<ViewStyle>;
 }
 
-const AnimatedBlock = Animated.createAnimatedComponent(Block);
+const AnimatedBlock = Animated.createAnimatedComponent(AppBlock);
 
 const Skeleton: React.FunctionComponent<SkeletonProps> = (props) => {
   const {
@@ -64,7 +64,7 @@ const Skeleton: React.FunctionComponent<SkeletonProps> = (props) => {
   });
 
   return (
-    <Block
+    <AppBlock
       {...props}
       accessibilityRole="none"
       accessibilityLabel="loading..."
@@ -86,7 +86,6 @@ const Skeleton: React.FunctionComponent<SkeletonProps> = (props) => {
     >
       {animation !== 'none' && (
         <AnimatedBlock
-          {...props}
           style={[
             styles.skeleton,
             {
@@ -110,7 +109,7 @@ const Skeleton: React.FunctionComponent<SkeletonProps> = (props) => {
           ]}
         />
       )}
-    </Block>
+    </AppBlock>
   );
 };
 
@@ -129,4 +128,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Skeleton;
+export { Skeleton };

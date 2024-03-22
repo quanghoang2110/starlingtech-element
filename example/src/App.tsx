@@ -7,15 +7,12 @@ import {
   appSize,
   AppText,
   AppTextInput,
-  Divider,
   KeyboardDismiss,
+  Skeleton,
   StarlingContainer,
 } from '@starlingtech/element';
 import { useAppColor } from './color';
 import light from '../vn.starlingTech/theme/color/light';
-// import IconSearch from '../assets/IconSearch';
-// import { useTheme } from '../../src/hook/contextHook';
-// import { AppImage } from '@starlingtech/element/image';
 
 export default function App() {
   const refInput1 = React.useRef<TextInput>(null);
@@ -38,10 +35,12 @@ export default function App() {
 
   const onValidate = (e: string) => {
     if (e.includes('a')) {
-      return 'Invalid date!';
+      return 'Invalid password!';
     }
     return undefined;
   };
+
+  const onButtonPress = () => {};
 
   const { colors } = useAppColor();
 
@@ -52,44 +51,52 @@ export default function App() {
       }}
     >
       <KeyboardDismiss flex>
-        {/* <AppImage /> */}
-        <AppBlock flex background="white" ph={16}>
+        <AppBlock flex background="white" ph={16} center>
+          <AppBlock row mb={20}>
+            <Skeleton animation="pulse" height={45} width={45} radius={10} />
+            <AppBlock ml={10}>
+              <Skeleton animation="pulse" height={20} width={150} radius />
+              <Skeleton
+                animation="pulse"
+                height={20}
+                width={200}
+                radius
+                mt={5}
+              />
+            </AppBlock>
+          </AppBlock>
+
           <Text>Result: {result}</Text>
           <AppText size={20} style={{ color: colors.primary1 }}>
             Result???
           </AppText>
           <AppText color={'primary'}>TEST COLOR</AppText>
-          {/* <OverlayLoading visible /> */}
-          <AppButton onPress={() => {}}>
-            <AppText>aaa</AppText>
-          </AppButton>
-          <Divider />
-          <AppButton onPress={() => {}} text="aaa" />
-          {/* <Skeleton animation="pulse" height={100} width={330} radius={100} /> */}
+
           <AppTextInput
+            required
+            requiredLabel
             label="Name"
-            // inline
-            onValidate={onValidate}
             ref={refInput1}
             nextInput={refInput2}
+            mb={10}
           />
-          <AppTextInput ref={refInput2} secureTextEntry label="Password" />
-          {/* <AppTextInput
-            leftIcon={<IconSearch />}
-            rightIcon={<IconSearch />}
+          <AppTextInput
+            required
+            onValidate={onValidate}
             ref={refInput2}
+            secureTextEntry
             label="Password"
-          /> */}
+          />
           <AppButton
-            // disabled={processing}
             processing={processing}
             onPress={onPress}
-            text="aaa"
+            text="Submit"
             primary
-            // width={330}
-            // radius={100}
             mt={30}
           />
+          <AppButton onPress={onButtonPress} border={1} mt={10}>
+            <AppText>Hello world</AppText>
+          </AppButton>
         </AppBlock>
       </KeyboardDismiss>
     </StarlingContainer>

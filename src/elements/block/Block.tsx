@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, type ViewProps } from 'react-native';
 
-import {
-  type BlockProps,
-  handleBlockStarlingStyle,
-} from './element.block.props';
+import { type AppBlockProps } from './BlockProps';
 import StarlingThemeContext from '../../theme/ThemeContext';
 import type { StarlingTheme } from '../../theme/type';
+import { handleBlockStarlingStyle } from '../../helper/styleHelper';
 
-class Block extends Component<BlockProps> {
+class AppBlock extends Component<AppBlockProps & ViewProps> {
   static contextType = StarlingThemeContext;
   static defaultProps = {
     allowFontScaling: false,
@@ -30,4 +28,4 @@ class Block extends Component<BlockProps> {
   }
 }
 
-export default Block;
+export { AppBlock };

@@ -14,7 +14,6 @@ const light: StarlingColorScheme = {
   buttonText: '#333',
   white: '#FFF',
   black: '#000',
-  //custom
   danger: '#FF2D55',
   success: '#18d676',
   warning: '#F0C330',

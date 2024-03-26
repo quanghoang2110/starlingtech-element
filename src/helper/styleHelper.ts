@@ -292,7 +292,7 @@ export function handleTextStarlingStyle(
 ) {
   const {
     primary,
-    size = appSize(sizes.text),
+    size = sizes.text,
     weight = '400',
     color: textColor = 'text',
     allowFontScaling = false,
@@ -305,7 +305,7 @@ export function handleTextStarlingStyle(
 
   const tempStyles: TextStyle = {
     ...elementStyles,
-    fontSize: size,
+    fontSize: appSize(size),
     fontWeight: weight,
   };
   const tempProps = { ...elementProps };

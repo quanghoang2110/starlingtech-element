@@ -4,7 +4,7 @@ import { appSize } from '../../helper/sizeHelper';
 
 export default StyleSheet.create({
   appInputEye: {
-    paddingRight: 55,
+    paddingRight: appSize(55),
   },
   helperTxt: {
     fontSize: appSize(sizes.hint),
@@ -37,15 +37,17 @@ export default StyleSheet.create({
     fontFamily: fonts?.regular,
     height: appSize(sizes.inputHeight),
     paddingLeft: appSize(sizes.inputHorizontalPadding),
-    paddingRight: 45,
   },
   inputWithLeftIcon: {
     marginLeft: appSize(5),
   },
+  inputWithRightIcon: {
+    paddingRight: appSize(45),
+  },
   item: { width: '100%' },
   labelContainer: { flexDirection: 'row', marginBottom: 9 },
   rightIcon: {
-    width: 32,
+    width: appSize(32),
   },
   textErr: {
     marginTop: 5,

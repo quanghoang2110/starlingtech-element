@@ -27,6 +27,7 @@ const AppTextInput = React.forwardRef(
       requiredLabel = true,
       iconCloseVisible = true,
       allowFontScaling = false,
+      noRight = false,
     } = props;
     const [value, setValue] = useState(props.value);
     const [error, setError] = useState(false);
@@ -155,6 +156,7 @@ const AppTextInput = React.forwardRef(
                   color: colors.inputTextColor,
                 },
                 props.leftIcon && formStyles.inputWithLeftIcon,
+                !noRight && formStyles.inputWithRightIcon,
                 elementStyles,
                 resetVisible &&
                   props.secureTextEntry !== undefined &&
@@ -171,17 +173,19 @@ const AppTextInput = React.forwardRef(
                 props.returnKeyType ?? (props.nextInput ? 'next' : 'default')
               }
             />
-            <TextInputRight
-              resetVisible={resetVisible}
-              secureTextEntry={props.secureTextEntry}
-              onResetValue={onResetValue}
-              onTogglePasswordVisible={onTogglePasswordVisible}
-              passwordShowing={passwordShowing}
-              iconHidePassword={props.iconHidePass}
-              iconShowPassword={props.iconShowPass}
-              iconColor={props.iconColor}
-              rightIcon={props.rightIcon}
-            />
+            {!noRight && (
+              <TextInputRight
+                resetVisible={resetVisible}
+                secureTextEntry={props.secureTextEntry}
+                onResetValue={onResetValue}
+                onTogglePasswordVisible={onTogglePasswordVisible}
+                passwordShowing={passwordShowing}
+                iconHidePassword={props.iconHidePass}
+                iconShowPassword={props.iconShowPass}
+                iconColor={props.iconColor}
+                rightIcon={props.rightIcon}
+              />
+            )}
           </AppBlock>
           {!props.noHelper && (
             <TextInputMessage color={errorColor} message={errorMessage} />

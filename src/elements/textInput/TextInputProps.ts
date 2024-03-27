@@ -48,4 +48,8 @@ export interface AppTextInputProps extends ElementDimensionProps {
    * custom invalid email message
    */
   invalidEmailMessage?: string;
+  /**
+   * right component (default=false)
+   */
+  noRight?: boolean;
 }

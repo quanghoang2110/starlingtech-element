@@ -17,6 +17,15 @@ export interface AppTextProps extends ElementProps {
     | '700'
     | '800'
     | '900'
+    | 'thin'
+    | 'extralight'
+    | 'light'
+    | 'regular'
+    | 'medium'
+    | 'semibold'
+    | 'bold'
+    | 'extrabold'
+    | 'black'
     | undefined;
   color?: keyof StarlingColorScheme;
   transform?: 'none' | 'capitalize' | 'uppercase' | 'lowercase';

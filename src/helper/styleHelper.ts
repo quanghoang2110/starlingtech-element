@@ -321,18 +321,22 @@ export function handleTextStarlingStyle(
   const _weight = StyleSheet.flatten(props.style)?.fontWeight || weight;
   switch (_weight) {
     case '100':
+    case 'thin':
       fontFamily = fonts.thin;
       break;
     case '200':
       fontFamily = fonts.extraLight;
       break;
     case '300':
+    case 'light':
       fontFamily = fonts.light;
       break;
     case '500':
+    case 'medium':
       fontFamily = fonts.medium;
       break;
     case '600':
+    case 'semibold':
       fontFamily = fonts.semiBold;
       break;
     case '700':
@@ -340,9 +344,11 @@ export function handleTextStarlingStyle(
       fontFamily = fonts.bold;
       break;
     case '800':
+    case 'extrabold':
       fontFamily = fonts.extraBold;
       break;
     case '900':
+    case 'black':
       fontFamily = fonts.black;
       break;
     default:

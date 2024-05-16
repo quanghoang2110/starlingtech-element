@@ -23,23 +23,33 @@ const AnimatedButton = Animated.createAnimatedComponent(Ripple);
 export default function ButtonLoading(props: ButtonLoadingProps) {
   const {
     processing,
-    width,
-    height,
+    width = sizes.buttonWidth,
+    height = sizes.buttonHeight,
+    radius = sizes.radius,
+    animateCenter = true,
     animateRadius = sizes.animateButtonRadius,
     animateOpacity = sizes.animateButtonOpacity,
+    animateWidth,
+    primary,
+    disabled,
+    disabledStyle,
+    disabledOpacity,
+    text,
+    textColor,
+    textStyle,
   } = props;
   const maxWidth = appSize(width);
   const { colors } = useThemeContext();
 
   const borderRadius =
-    props.radius !== undefined && typeof props.radius !== 'boolean'
-      ? appSize(props.radius)
+    radius !== undefined && typeof radius !== 'boolean'
+      ? appSize(radius)
       : appSize(sizes.radius);
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const minWidth = props.animateWidth
-    ? appSize(props.animateWidth)
+  const minWidth = animateWidth
+    ? appSize(animateWidth)
     : height
     ? appSize(height)
     : Platform.OS === 'ios'
@@ -63,7 +73,7 @@ export default function ButtonLoading(props: ButtonLoadingProps) {
   const children = isLoading ? (
     <ActivityIndicator
       animating
-      color={props.primary ? colors.white : colors.buttonText}
+      color={primary ? colors.white : colors.buttonText}
     />
   ) : (
     props.children || (
@@ -72,17 +82,17 @@ export default function ButtonLoading(props: ButtonLoadingProps) {
           adjustsFontSizeToFit
           textAlign="center"
           size={sizes.buttonText}
-          style={[props.textStyle, animTextStyle]}
-          color={props.textColor || props.primary ? 'white' : 'text'}
+          style={[textStyle, animTextStyle]}
+          color={textColor || primary ? 'white' : 'text'}
         >
-          {props.text || ''}
+          {text || ''}
         </AnimatedText>
       </>
     )
   );
 
   const { elementStyles, elementProps } = handleButtonStarlingStyle(
-    props,
+    { ...props, width, height, radius },
     colors
   );
 
@@ -97,31 +107,25 @@ export default function ButtonLoading(props: ButtonLoadingProps) {
       // left: withTiming(isLoading ? (maxWidth - minWidth) / 2 : 0, {
       //   duration: 450,
       // }),
-      opacity: props.disabled
-        ? props.disabledOpacity
+      opacity: disabled
+        ? disabledOpacity
         : withTiming(isLoading ? animateOpacity : 1, {
             duration: 450,
           }),
     };
-  }, [
-    isLoading,
-    animateOpacity,
-    animateRadius,
-    props.disabled,
-    props.disabledOpacity,
-  ]);
+  }, [isLoading, animateOpacity, animateRadius, disabled, disabledOpacity]);
 
   return (
-    <AppBlock center={props.animateCenter}>
+    <AppBlock center={animateCenter}>
       <AnimatedButton
         {...elementProps}
         rippleContainerBorderRadius={borderRadius}
-        disabled={props.disabled || props.processing || isLoading}
+        disabled={disabled || processing || isLoading}
         style={[
           styles.button,
           elementStyles,
           animStyle,
-          props.disabled && props.disabledStyle,
+          disabled && disabledStyle,
         ]}
       >
         {children}
@@ -130,14 +134,14 @@ export default function ButtonLoading(props: ButtonLoadingProps) {
   );
 }
 
-ButtonLoading.defaultProps = {
-  width: sizes.buttonWidth,
-  height: sizes.buttonHeight,
-  radius: sizes.radius,
-  animateCenter: true,
-  animateRadius: sizes.animateButtonRadius,
-  animateOpacity: sizes.animateButtonOpacity,
-};
+// ButtonLoading.defaultProps = {
+//   width: sizes.buttonWidth,
+//   height: sizes.buttonHeight,
+//   radius: sizes.radius,
+//   animateCenter: true,
+//   animateRadius: sizes.animateButtonRadius,
+//   animateOpacity: sizes.animateButtonOpacity,
+// };
 
 const styles = StyleSheet.create({
   button: { alignItems: 'center', justifyContent: 'center' },

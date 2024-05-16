@@ -9,12 +9,19 @@ import { AppText } from '../text/Text';
 import { StyleSheet } from 'react-native';
 import { handleButtonStarlingStyle } from '../../helper/styleHelper';
 
-export function AppButton(props: AppButtonProps) {
+export function AppButton(_props: AppButtonProps) {
   const { colors } = useThemeContext();
 
-  if (props?.processing !== undefined) {
-    return <ButtonLoading {...props} />;
+  if (_props?.processing !== undefined) {
+    return <ButtonLoading {..._props} />;
   }
+
+  const props = {
+    ..._props,
+    width: _props.width ?? sizes.buttonWidth,
+    height: _props.height ?? sizes.buttonHeight,
+    disabledOpacity: _props.disabledOpacity ?? sizes.buttonDisabledOpacity,
+  };
 
   const { elementProps, elementStyles } = handleButtonStarlingStyle(
     props,
@@ -52,13 +59,6 @@ export function AppButton(props: AppButtonProps) {
     </Ripple>
   );
 }
-
-AppButton.defaultProps = {
-  width: sizes.buttonWidth,
-  height: sizes.buttonHeight,
-  disabledOpacity: sizes.buttonDisabledOpacity,
-  // radius: sizes.buttonRadius,
-};
 
 const styles = StyleSheet.create({
   button: { alignItems: 'center', justifyContent: 'center' },

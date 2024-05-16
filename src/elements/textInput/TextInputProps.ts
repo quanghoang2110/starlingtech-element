@@ -1,13 +1,24 @@
 import type { StyleProp, TextInput, TextStyle } from 'react-native';
 import type { ReactElement, RefObject } from 'react';
 import type { ElementDimensionProps } from '../element.props';
+import type { ViewStyle } from 'react-native';
 
 export interface AppTextInputProps extends ElementDimensionProps {
   required?: boolean;
   requiredLabel?: boolean;
   label?: string;
   errorColor?: string;
-  containerStyle?: StyleProp<TextStyle>;
+  /**
+   * style for container item
+   */
+  containerStyle?: StyleProp<ViewStyle>;
+  /**
+   * style for input box
+   */
+  inputStyle?: StyleProp<ViewStyle>;
+  /**
+   * style for input text
+   */
   inputTextStyle?: StyleProp<TextStyle>;
   /**
    * input inline

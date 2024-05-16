@@ -141,6 +141,7 @@ const AppTextInput = React.forwardRef(
               focused && { borderColor: colors.primary },
               error && { borderColor: errorColor },
               props.noBorder && styles.noBorder,
+              props.inputStyle,
             ]}
           >
             {props.leftIcon}

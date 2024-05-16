@@ -39,8 +39,8 @@ export interface ButtonProps extends ElementProps {
 }
 
 export interface ButtonLoadingProps extends ButtonProps {
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   /**
    * width of the loading button (default = height)
    */

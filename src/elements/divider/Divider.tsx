@@ -7,13 +7,10 @@ export function Divider(props: AppBlockProps) {
   return (
     <AppBlock
       {...props}
+      width={props.width ?? '100%'}
       height={props.height ?? StyleSheet.hairlineWidth}
       background={props.background ?? 'divider'}
-      style={[styles.line, props.style]}
+      style={[props.style]}
     />
   );
 }
-
-const styles = StyleSheet.create({
-  line: { width: '100%' },
-});

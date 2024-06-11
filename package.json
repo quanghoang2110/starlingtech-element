@@ -1,6 +1,6 @@
 {
   "name": "@starlingtech/element",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "starlingtech react native elements",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",

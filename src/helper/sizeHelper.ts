@@ -2,7 +2,11 @@ import { Dimensions } from 'react-native';
 
 import { UI_WIDTH, UI_HEIGHT } from '../starlingTheme';
 
-const { width: windowWidth, height: windowHeight } = Dimensions.get('window');
+const { width: _windowWidth, height: _windowHeight } = Dimensions.get('window');
+
+const windowWidth = _windowWidth > _windowHeight ? _windowHeight : _windowWidth;
+const windowHeight =
+  _windowWidth < _windowHeight ? _windowHeight : _windowWidth;
 
 export function appSize<TData = string | number>(
   size: TData,

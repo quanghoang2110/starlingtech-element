@@ -28,6 +28,7 @@ const AppTextInput = React.forwardRef(
       iconCloseVisible = true,
       allowFontScaling = false,
       noRight = false,
+      borderColor = colors.inputBorder,
     } = props;
     const [value, setValue] = useState(props.value);
     const [error, setError] = useState(false);
@@ -132,7 +133,7 @@ const AppTextInput = React.forwardRef(
             style={[
               formStyles.inputView,
               {
-                borderColor: colors.inputBorder,
+                borderColor,
                 backgroundColor: colors.inputBackground,
               },
               editable === false && {

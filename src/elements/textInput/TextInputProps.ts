@@ -63,4 +63,6 @@ export interface AppTextInputProps extends ElementDimensionProps {
    * right component (default=false)
    */
   noRight?: boolean;
+
+  borderColor?: string;
 }

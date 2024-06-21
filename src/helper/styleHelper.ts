@@ -13,8 +13,19 @@ export function handleStarlingStyle<T extends ElementProps & { style?: any }>(
   props: T,
   color: StarlingColorScheme
 ) {
-  const { width, height, margin, padding, radius, background, flex, border } =
-    props;
+  const {
+    width,
+    height,
+    margin,
+    padding,
+    radius,
+    background,
+    flex,
+    border,
+    gap,
+    rowGap,
+    columnGap,
+  } = props;
 
   const tempProps = { ...props };
   let tempStyles: ViewStyle = {};
@@ -38,6 +49,18 @@ export function handleStarlingStyle<T extends ElementProps & { style?: any }>(
       tempStyles.borderRadius = appSize(radius);
     }
     delete tempProps.radius;
+  }
+  if (gap) {
+    tempStyles.gap = gap;
+    delete tempProps.gap;
+  }
+  if (rowGap) {
+    tempStyles.rowGap = rowGap;
+    delete tempProps.rowGap;
+  }
+  if (columnGap) {
+    tempStyles.columnGap = columnGap;
+    delete tempProps.columnGap;
   }
   if (props.ph) {
     tempStyles.paddingHorizontal = appSize(props.ph);

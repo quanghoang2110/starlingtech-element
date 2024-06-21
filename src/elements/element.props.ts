@@ -113,4 +113,7 @@ export interface ElementProps extends ElementDimensionProps {
   overflow?: 'visible' | 'hidden' | 'scroll' | undefined;
   flexWrap?: 'wrap' | 'nowrap' | 'wrap-reverse' | undefined;
   wrap?: boolean;
+  gap?: number;
+  rowGap?: number;
+  columnGap?: number;
 }

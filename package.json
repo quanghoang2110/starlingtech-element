@@ -1,6 +1,6 @@
 {
   "name": "@starlingtech/element",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "starlingtech react native elements",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -34,7 +34,7 @@
     "release": "release-it",
     "example": "yarn --cwd example",
     "bootstrap": "yarn example && yarn install",
-    "publish": "publish --access public"
+    "publish": "npm publish --access public"
   },
   "keywords": [
     "react-native",

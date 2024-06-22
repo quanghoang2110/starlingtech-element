@@ -18,10 +18,14 @@ export function AppButton(_props: AppButtonProps) {
 
   const props = {
     ..._props,
-    width: _props.width ?? sizes.buttonWidth,
-    height: _props.height ?? sizes.buttonHeight,
+
     disabledOpacity: _props.disabledOpacity ?? sizes.buttonDisabledOpacity,
   };
+
+  if (!props.reset) {
+    props.width = _props.width ?? sizes.buttonWidth;
+    props.height = _props.height ?? sizes.buttonHeight;
+  }
 
   const { elementProps, elementStyles } = handleButtonStarlingStyle(
     props,

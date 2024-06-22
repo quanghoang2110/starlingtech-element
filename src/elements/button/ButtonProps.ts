@@ -36,6 +36,7 @@ export interface ButtonProps extends ElementProps {
    */
   disabledOpacity?: number;
   disabled?: boolean;
+  reset?: boolean;
 }
 
 export interface ButtonLoadingProps extends ButtonProps {
